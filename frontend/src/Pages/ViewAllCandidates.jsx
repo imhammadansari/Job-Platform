@@ -1,17 +1,14 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { useEffect } from 'react';
 import Header from '../Components/Header';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const ViewAllCandidates = () => {
-
     const navigate = useNavigate();
-
     const [users, setUsers] = useState([]);
-
 
     axios.defaults.withCredentials = true;
 
@@ -20,47 +17,46 @@ const ViewAllCandidates = () => {
             const response = await axios.get('https://job-platform.up.railway.app/candidate/viewAllCandidate');
             setUsers(response.data);
         } catch (error) {
-            
+            toast.error("Failed to load candidates", { toastId: 'loadError' });
         }
     }
 
-
     const deleteUser = async(id) => {
-         try {
+        try {
             toast.dismiss();
             const response = await axios.post(`https://job-platform.up.railway.app/candidate/deleteCandidates/${id}`);
             if(response.status === 200){
-                toast.success(`Candidate with id ${id} has been deleted`);
+                toast.success(`Candidate deleted`, { 
+                    toastId: 'deleteSuccess',
+                    autoClose: 2000
+                });
                 setTimeout(() => navigate('/view-admin-jobs'), 2000);
             }
         } catch (error) {
-            toast.error(error.message);
+            toast.error(error.message, { toastId: 'deleteError' });
         }
-
     }
 
-    
     const updateStatus = async(userId, userStatus) => {
         try {
-                toast.dismiss();
-
+            toast.dismiss(); // Clear any existing toasts
+            
             const newStatus = userStatus === 'Blocked' ? 'UnBlock' : 'Blocked';
             const response = await axios.post(`https://job-platform.up.railway.app/candidate/updateStatus/${userId}`, {
                 id: userId,
                 status: newStatus
-            })
+            });
+            
             if(response.status === 200){
-                toast.success("Status Updated Successfully");
-                setTimeout(() => allCandidates(), 2000);
+                toast.success(`User ${newStatus === 'Blocked' ? 'blocked' : 'unblocked'}`, {
+                    toastId: 'statusUpdate',
+                    autoClose: 2000
+                });
+                await allCandidates(); // Wait for refresh
             }
         } catch (error) {
-            console.log(error.message);
-            
+            toast.error(error.message, { toastId: 'statusError' });
         }
-    }
-
-    const navigatebutton = () => {
-        navigate(`/view-admin-jobs`)
     }
 
     useEffect(() => {
