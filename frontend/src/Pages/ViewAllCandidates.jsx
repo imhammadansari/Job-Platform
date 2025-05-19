@@ -1,65 +1,78 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import { useEffect } from 'react';
 import Header from '../Components/Header';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const ViewAllCandidates = () => {
+
     const navigate = useNavigate();
+
     const [users, setUsers] = useState([]);
 
+
     axios.defaults.withCredentials = true;
+
+    const successNotify = () => {
+        toast.success('Status Updated Successfully', {
+          position: 'top-center',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'dark',
+        });
+      };
 
     const allCandidates = async() => {
         try {
             const response = await axios.get('https://job-platform.up.railway.app/candidate/viewAllCandidate');
             setUsers(response.data);
         } catch (error) {
-            toast.error("Failed to load candidates", { toastId: 'loadError' });
+            
         }
     }
 
+
     const deleteUser = async(id) => {
-        try {
+         try {
             toast.dismiss();
             const response = await axios.post(`https://job-platform.up.railway.app/candidate/deleteCandidates/${id}`);
             if(response.status === 200){
-                toast.success(`Candidate deleted`, { 
-                    toastId: 'deleteSuccess',
-                    autoClose: 2000
-                });
+                toast.success(`Candidate with id ${id} has been deleted`);
                 setTimeout(() => navigate('/view-admin-jobs'), 2000);
             }
         } catch (error) {
-            toast.error(error.message, { toastId: 'deleteError' });
+            toast.error(error.message);
         }
+
     }
 
+    
     const updateStatus = async(userId, userStatus) => {
         try {
-            toast.dismiss(); // Clear any existing toasts
-            
+                toast.dismiss();
+
             const newStatus = userStatus === 'Blocked' ? 'UnBlock' : 'Blocked';
             const response = await axios.post(`https://job-platform.up.railway.app/candidate/updateStatus/${userId}`, {
                 id: userId,
                 status: newStatus
-            });
-            
+            })
             if(response.status === 200){
-                toast.success(`User ${newStatus === 'Blocked' ? 'blocked' : 'unblocked'}`, {
-                    toastId: 'statusUpdate',
-                    autoClose: 2000
-                });
-                await allCandidates(); // Wait for refresh
+                successNotify();
+                setTimeout(() => allCandidates(), 2000);
             }
         } catch (error) {
-            toast.error(error.message, { toastId: 'statusError' });
+            console.log(error.message);
+            
         }
     }
 
-        const navigatebutton = () => {
+    const navigatebutton = () => {
         navigate(`/view-admin-jobs`)
     }
 
@@ -113,24 +126,7 @@ const ViewAllCandidates = () => {
                 )}
 
             </div>
-           <ToastContainer 
-    position="top-center"
-    autoClose={3000}
-    hideProgressBar={false}
-    newestOnTop={false}
-    closeOnClick
-    rtl={false}
-    pauseOnFocusLoss
-    draggable
-    pauseOnHover
-    theme="colored"
-    style={{ 
-        width: "90%", 
-        maxWidth: "400px", 
-        fontSize: "14px",
-        zIndex: 9999 
-    }}
-/>
+           <ToastContainer />
         </>
     )
 }
