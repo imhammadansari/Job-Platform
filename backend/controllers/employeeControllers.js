@@ -94,7 +94,11 @@ const viewEmployee = async function (req, res){
 const logoutUser = async function (req, res){
     try {
         if(req.cookies.token){
-            res.clearCookie("token");
+            res.clearCookie("token", {
+                httpOnly: true,
+                secure: true,
+                sameSite: 'None'
+            });
             res.status(200).send("User Loggedout");
         }
         else{
