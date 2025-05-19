@@ -72,9 +72,8 @@ const AdminViewJobs = () => {
             const response = await axios.post(`https://job-platform.up.railway.app/jobs/adminDeleteJobs/${id}`);
             if (response.status === 200) {
                 successNotify(id);
-                setTimeout(() => {
-                    navigate('/view-admin-jobs');
-                }, 5000);
+                setTimeout(() => window.location.reload(), 2000);
+
             }
         } catch (error) {
             console.log(error.message);

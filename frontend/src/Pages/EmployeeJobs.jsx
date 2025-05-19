@@ -32,7 +32,7 @@ const SubmittedApplications = () => {
             const response = await axios.post(`https://job-platform.up.railway.app/jobs/deleteJob/${id}`);
             if(response.success === 200){
                 toast.success("Job Deleted Successfully");
-                setTimeout (() => getJobDetails(), 1500);
+                setTimeout(() => window.location.reload(), 1500);
 
             }
 
