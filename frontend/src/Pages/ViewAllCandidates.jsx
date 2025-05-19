@@ -64,7 +64,7 @@ const ViewAllCandidates = () => {
             })
             if(response.status === 200){
                 successNotify();
-                setTimeout(() => allCandidates(), 2000);
+                setTimeout(() => allCandidates(), 1000);
             }
         } catch (error) {
             console.log(error.message);
