@@ -16,17 +16,18 @@ const ViewAllCandidates = () => {
     axios.defaults.withCredentials = true;
 
     const successNotify = () => {
-        toast.success('Status Updated Successfully', {
-          position: 'top-center',
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: 'dark',
-        });
-      };
+  toast.success('Status Updated Successfully', {
+    toastId: 'statusUpdateSuccess', // Unique ID
+    position: 'top-center',
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: 'dark',
+  });
+};
 
     const allCandidates = async() => {
         try {
