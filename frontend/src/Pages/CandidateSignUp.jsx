@@ -31,7 +31,7 @@ const CandidateSignUpPage = () => {
 
             if (response.status === 200) {
                 toast.success("User Registered Successfully");
-                setTimeout (() => navigate('/login'), 2000);
+                setTimeout (() => navigate('/candidate-login'), 1500);
             }
         } catch (error) {
              if (error.response && error.response.status) {
