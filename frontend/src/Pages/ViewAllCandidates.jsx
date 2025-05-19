@@ -110,7 +110,16 @@ const ViewAllCandidates = () => {
                 )}
 
             </div>
-            <ToastContainer position="top-center" autoClose={3000} />
+            <ToastContainer 
+  position="top-center"
+  autoClose={3000}
+  closeOnClick
+  pauseOnHover
+  draggable
+  pauseOnFocusLoss
+  theme="colored"
+  style={{ width: "90%", maxWidth: "400px", fontSize: "14px" }}
+/>
         </>
     )
 }
