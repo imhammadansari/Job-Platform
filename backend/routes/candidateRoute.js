@@ -1,6 +1,6 @@
 const express = require('express');
 const { loginUser, registerUser, logoutUser, viewCandidate, allCandidates, deleteCandidate, updateStatus } = require('../controllers/candidateController');
-const isAdminLoggedIn = require('../middlewares/isAdminLoggedIn');
+const isAdminLoggedIn = require('../middlewares/isAdminLoggedin');
 const isCandidateLoggedin = require('../middlewares/isCandidateLoggedin');
 const router = express.Router();
 
