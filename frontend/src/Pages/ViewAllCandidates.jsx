@@ -15,20 +15,6 @@ const ViewAllCandidates = () => {
 
     axios.defaults.withCredentials = true;
 
-    const successNotify = () => {
-  toast.success('Status Updated Successfully', {
-    toastId: 'statusUpdateSuccess', // Unique ID
-    position: 'top-center',
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: 'dark',
-  });
-};
-
     const allCandidates = async() => {
         try {
             const response = await axios.get('https://job-platform.up.railway.app/candidate/viewAllCandidate');
@@ -41,7 +27,6 @@ const ViewAllCandidates = () => {
 
     const deleteUser = async(id) => {
          try {
-            toast.dismiss();
             const response = await axios.post(`https://job-platform.up.railway.app/candidate/deleteCandidates/${id}`);
             if(response.status === 200){
                 toast.success(`Candidate with id ${id} has been deleted`);
@@ -56,16 +41,13 @@ const ViewAllCandidates = () => {
     
     const updateStatus = async(userId, userStatus) => {
         try {
-                toast.dismiss();
-
             const newStatus = userStatus === 'Blocked' ? 'UnBlock' : 'Blocked';
             const response = await axios.post(`https://job-platform.up.railway.app/candidate/updateStatus/${userId}`, {
                 id: userId,
                 status: newStatus
             })
             if(response.status === 200){
-                successNotify();
-                setTimeout(() => allCandidates(), 1000);
+            allCandidates()
             }
         } catch (error) {
             console.log(error.message);
@@ -127,7 +109,7 @@ const ViewAllCandidates = () => {
                 )}
 
             </div>
-           <ToastContainer />
+            <ToastContainer position="top-center" autoClose={3000} />
         </>
     )
 }
