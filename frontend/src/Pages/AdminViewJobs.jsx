@@ -107,7 +107,7 @@ const AdminViewJobs = () => {
                             <h1><span className='font-medium'>Total Users:</span> {users.length}</h1>
                             <h1><span className='font-medium'>Total Jobs:</span> {allJobs.length}</h1>
                         </div>
-                        <div className='min-w-auto'>
+                        <div className='min-w-[1000px]'>
                             <div className='grid grid-cols-5 text-center'>
                                 <h1 className='border-l font-medium border-b p-2 border-black'>Title</h1>
                                 <h1 className='border-l font-medium border-b p-2 border-black'>Salary</h1>

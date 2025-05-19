@@ -72,7 +72,7 @@ const ViewAllCandidates = () => {
                 {users.length > 0 ? (
                     <div className='w-full px-2 sm:px-3 md:px-4 lg:px-4 py-2 md:py-4 overflow-x-auto bg-white'>
  
-                        <div className='min-w-[600px]'>
+                        <div className='min-w-[1000px]'>
                         <div className='grid grid-cols-3 text-center'>
                             <h1 className='border-l font-medium border-b p-2 border-black'>Name</h1>
                             <h1 className='border-l font-medium border-b p-2 border-black'>Email</h1>
