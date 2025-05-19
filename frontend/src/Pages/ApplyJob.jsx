@@ -174,6 +174,12 @@ const ApplyJob = () => {
               <input value={phoneNumber} className='w-full rounded-md h-8 p-2 border border-black' onChange={(e) => setPhoneNumber(e.target.value)} type='number' required />
             </div>
 
+            <div className='flex flex-col w-full gap-1'>
+              <h1 className='font-medium'>Upload Resume:</h1>
+              <input className='w-full rounded-md' onChange={(e) => setResume(e.target.files[0])} 
+              type='file' accept="application/pdf" required />
+            </div>
+
 
           </div>
 
