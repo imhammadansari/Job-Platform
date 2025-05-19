@@ -13,8 +13,8 @@ dist-ssr
 *.local
 
 # Secret
-.env
-vercel.json
+/backend/.env
+frontend/vercel.json
 
 # Editor directories and files
 .vscode/*
