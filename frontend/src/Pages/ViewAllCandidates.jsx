@@ -59,6 +59,10 @@ const ViewAllCandidates = () => {
         }
     }
 
+        const navigatebutton = () => {
+        navigate(`/view-admin-jobs`)
+    }
+
     useEffect(() => {
         allCandidates();
     }, []);
