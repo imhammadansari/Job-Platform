@@ -71,6 +71,8 @@ const JobPost = () => {
         setSalary('');
         setTags('');
         setDeadline('');
+        setTimeout(() => window.location.reload(), 1500);
+
       }
 
     } catch (error) {

@@ -44,6 +44,8 @@ const ApplyJob = () => {
   setName('');
   setEmail('');
   setPhoneNumber('');
+  setTimeout(() => navigate('/submittedApplications'), 1500);
+
 }
 
     } catch (error) {

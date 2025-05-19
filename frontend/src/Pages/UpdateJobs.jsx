@@ -91,9 +91,8 @@ const UpdateJobs = () => {
 
       if(response.status === 200){
         successNotify();
-        setTimeout(() => {
-        navigate('/employee-jobs');
-      }, 5000);
+        setTimeout(() => window.location.reload(), 2000);
+
       }
     } catch (error) {
       if(error.response && error.response.status){
@@ -122,7 +121,7 @@ const UpdateJobs = () => {
 
         {/* For Desktop */}
         <form onSubmit={updateJob} className='hidden min-h-screen sm:flex flex-col px-4 gap-4 py-2 rounded-lg bg-white items-center justify-start'>
-          <h1 className='text-center text-2xl text-[rgb(2,6,111)] pb-2'>Job Post</h1>
+          <h1 className='text-center text-2xl text-[rgb(2,6,111)] pb-2'>Update a Job</h1>
 
           <div className='w-full flex flex-col gap-3 items-start'>
 
@@ -205,7 +204,7 @@ const UpdateJobs = () => {
         
         {/* For Mobile */}
         <form onSubmit={updateJob} className='flex sm:hidden flex-col px-2 gap-4 py-2 rounded-lg bg-white items-center justify-center'>
-          <h1 className='text-center text-xl text-[rgb(2,6,111)] pb-2'>Apply For a Job</h1>
+          <h1 className='text-center text-xl text-[rgb(2,6,111)] pb-2'>Update a Job</h1>
 
           {/* First Row */}
           <div className='flex flex-col gap-2 w-full items-center justify-center'>
@@ -261,7 +260,7 @@ const UpdateJobs = () => {
 
 
           <div className='flex gap-4'>
-          <button type='submit' className='w-24 h-10 bg-[rgb(2,6,111)] cursor-pointer text-white rounded-md'>Post</button>
+          <button type='submit' className='w-24 h-10 bg-[rgb(2,6,111)] cursor-pointer text-white rounded-md'>Update</button>
           <button onClick={() => navigate(`/employee-jobs`)} className='w-24 h-10 border cursor-pointer text-[rgb(2,6,111)] border-[rgb(2,6,111)] rounded-md'>Back</button>
           </div>
           
