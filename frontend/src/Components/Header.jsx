@@ -27,8 +27,8 @@ const Header = () => {
         try {
             const response = await axios.post('https://job-platform.up.railway.app/candidate/candidateLogout');
             if (response.status === 200) {
-                toast.success("Candidate Loggedout successfully!");
-                setTimeout(() => window.location.reload(), 10000); 
+                toast.success("Candidate Loggedout successfully!")
+                setTimeout(() => window.location.reload(), 3000);
             }
         } catch (error) {
 
@@ -40,7 +40,7 @@ const Header = () => {
             const response = await axios.post('https://job-platform.up.railway.app/employee/employeeLogout');
             if (response.status === 200) {
                 toast.success("Employee Loggedout successfully!");
-                setTimeout(() => window.location.reload(), 10000); 
+                setTimeout(() => window.location.reload(), 3000);
             }
         } catch (error) {
 
@@ -51,8 +51,8 @@ const Header = () => {
         try {
             const response = await axios.post('https://job-platform.up.railway.app/admin/adminLogout');
             if (response.status === 200) {
-                toast.success("Admin Loggedout successfully!");
-                setTimeout(() => window.location.reload(), 10000); 
+                toast.success("Admin Loggedout successfully!")
+                setTimeout(() => window.location.reload(), 3000);
             }
         } catch (error) {
 
