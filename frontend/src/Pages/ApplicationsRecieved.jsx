@@ -16,7 +16,7 @@ const ApplicationsRecieved = () => {
     const getJobDetails = async () => {
         try {
             setLoading(true);
-            const response = await axios.get(`http://localhost:8000/apply/applicationsRecieved/${id}`);
+            const response = await axios.get(`https://job-platform.up.railway.app/apply/applicationsRecieved/${id}`);
             console.log(response.data);
             setJobDetails(response.data);
         } catch (error) {
@@ -67,7 +67,7 @@ const ApplicationsRecieved = () => {
                                     <h1 className='border-l border-b p-2 border-black'>{job.phoneNumber}</h1>
                                     <h1 className='border-l border-b p-2 border-black'>{job.email}</h1>
                                     <a
-              href={`http://localhost:8000/apply/downloadResume/${job._id}`}
+              href={`https://job-platform.up.railway.app/apply/downloadResume/${job._id}`}
               target='_blank'
               rel='noopener noreferrer'
               className='text-blue-600 underline border-l border-b p-2 border-black'

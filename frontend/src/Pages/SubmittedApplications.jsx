@@ -19,7 +19,7 @@ const SubmittedApplications = () => {
     const getJobDetails = async () => {
         try {
             setLoading(true)
-            const response = await axios.get('http://localhost:8000/apply/viewCandidateLists');
+            const response = await axios.get('https://job-platform.up.railway.app/apply/viewCandidateLists');
             console.log("SubmittedApp", response.data);
             setJobDetails(response.data);
         } catch (error) {

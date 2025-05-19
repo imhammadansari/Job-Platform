@@ -16,7 +16,7 @@ const EmployeeLoginPage = () => {
     const lognDetails = async(e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:8000/employee/employeeLogin', {
+            const response = await axios.post('https://job-platform.up.railway.app/employee/employeeLogin', {
                 email: email,
                 password: password
             });

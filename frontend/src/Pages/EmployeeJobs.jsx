@@ -17,7 +17,7 @@ const SubmittedApplications = () => {
     const getJobDetails = async () => {
         try {
             setLoading(true);
-            const response = await axios.get('http://localhost:8000/jobs/viewEmployeeJobs');
+            const response = await axios.get('https://job-platform.up.railway.app/jobs/viewEmployeeJobs');
             console.log(response.data);
             setJobDetails(response.data);
         } catch (error) {
@@ -29,7 +29,7 @@ const SubmittedApplications = () => {
     
     const deleteJob = async (id) => {
         try {
-            const response = await axios.post(`http://localhost:8000/jobs/deleteJob/${id}`);
+            const response = await axios.post(`https://job-platform.up.railway.app/jobs/deleteJob/${id}`);
             if(response.success === 200){
                 toast.success("Job Deleted Successfully");
                 setTimeout (() => getJobDetails(), 1500);

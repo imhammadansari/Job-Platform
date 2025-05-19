@@ -23,7 +23,7 @@ const EmployeeSignUpPage = () => {
         }
 
         try {
-            const response = await axios.post('http://localhost:8000/employee/employeeRegisterUser', {
+            const response = await axios.post('https://job-platform.up.railway.app/employee/employeeRegisterUser', {
                 name,
                 email,
                 password

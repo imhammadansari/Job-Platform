@@ -9,7 +9,7 @@ const FIlterMenu = ({ alljobs, setAllJobs, jobs, setJobs, hideFilterMenu }) => {
 
     const fetchJobs = async () => {
             try {
-            const response = await axios.get('http://localhost:8000/jobs/viewJobs');
+            const response = await axios.get('https://job-platform.up.railway.app/jobs/viewJobs');
             setJobs(response.data);
             setAllJobs(response.data);
             } catch (error) {

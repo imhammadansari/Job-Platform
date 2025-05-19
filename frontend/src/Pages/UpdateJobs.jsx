@@ -52,7 +52,7 @@ const UpdateJobs = () => {
 
   const getJobDetails = async() => {
     try {
-        const response = await axios.get(`http://localhost:8000/jobs/viewJobs/${id}`);
+        const response = await axios.get(`https://job-platform.up.railway.app/jobs/viewJobs/${id}`);
             const responseData = response.data;
             console.log(responseData);
             if (responseData) {
@@ -78,7 +78,7 @@ const UpdateJobs = () => {
     seterror('');
 
     try {
-      const response = await axios.post(`http://localhost:8000/jobs/updateJob/${id}`, {
+      const response = await axios.post(`https://job-platform.up.railway.app/jobs/updateJob/${id}`, {
         title,
         description,
         type,

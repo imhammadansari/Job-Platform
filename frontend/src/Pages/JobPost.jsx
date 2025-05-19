@@ -52,7 +52,7 @@ const JobPost = () => {
     seterror('');
 
     try {
-      const response = await axios.post(`http://localhost:8000/jobs/createJob`, {
+      const response = await axios.post(`https://job-platform.up.railway.app/jobs/createJob`, {
         title,
         description,
         type,

@@ -17,7 +17,7 @@ const ViewAllCandidates = () => {
 
     const allCandidates = async() => {
         try {
-            const response = await axios.get('http://localhost:8000/candidate/viewAllCandidate');
+            const response = await axios.get('https://job-platform.up.railway.app/candidate/viewAllCandidate');
             setUsers(response.data);
         } catch (error) {
             
@@ -27,7 +27,7 @@ const ViewAllCandidates = () => {
 
     const deleteUser = async(id) => {
          try {
-            const response = await axios.post(`http://localhost:8000/candidate/deleteCandidates/${id}`);
+            const response = await axios.post(`https://job-platform.up.railway.app/candidate/deleteCandidates/${id}`);
             if(response.status === 200){
                 toast.success(`Candidate with id ${id} has been deleted`);
                 setTimeout(() => navigate('/view-admin-jobs'), 2000);
@@ -42,7 +42,7 @@ const ViewAllCandidates = () => {
     const updateStatus = async(userId, userStatus) => {
         try {
             const newStatus = userStatus === 'Blocked' ? 'UnBlock' : 'Blocked';
-            const response = await axios.post(`http://localhost:8000/candidate/updateStatus/${userId}`, {
+            const response = await axios.post(`https://job-platform.up.railway.app/candidate/updateStatus/${userId}`, {
                 id: userId,
                 status: newStatus
             })

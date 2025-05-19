@@ -22,7 +22,7 @@ const AdminSignUpPage = () => {
         }
 
         try {
-            const response = await axios.post('http://localhost:8000/users/registerUser', {
+            const response = await axios.post('https://job-platform.up.railway.app/users/registerUser', {
                 name,
                 email,
                 password

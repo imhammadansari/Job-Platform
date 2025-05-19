@@ -35,7 +35,7 @@ const ApplyJob = () => {
     };
 
     try {
-      const response = await axios.post(`http://localhost:8000/apply/applyForJob/${id}`, 
+      const response = await axios.post(`https://job-platform.up.railway.app/apply/applyForJob/${id}`, 
         formData
       );
 
@@ -69,7 +69,7 @@ const ApplyJob = () => {
   const fetchJobDetails = async () => {
         try {
             setLoading(true);
-            const response = await axios.get(`http://localhost:8000/jobs/viewJobs/${id}`);
+            const response = await axios.get(`https://job-platform.up.railway.app/jobs/viewJobs/${id}`);
             setJob(response.data);
             console.log(response);
         } catch (error) {

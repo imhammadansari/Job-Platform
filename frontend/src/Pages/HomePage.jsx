@@ -15,7 +15,7 @@ const HomePage = () => {
 
   const fetchJobs = async () => {
           try {
-              const response = await axios.get('http://localhost:8000/jobs/viewJobs');
+              const response = await axios.get('https://job-platform.up.railway.app/jobs/viewJobs');
               setAllJobs(response.data);
               setJobs(response.data);
               console.log(response.data)

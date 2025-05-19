@@ -16,7 +16,7 @@ const MenuBar = ({ hideMenu }) => {
     
     const candidateLoggedUser = async () => {
         try {
-            const response = await axios.get(`http://localhost:8000/candidate/viewCandidate`);
+            const response = await axios.get(`https://job-platform.up.railway.app/candidate/viewCandidate`);
             setCandidateUser(response.data);
         } catch (error) {
         }
@@ -24,7 +24,7 @@ const MenuBar = ({ hideMenu }) => {
 
     const logoutCandidate = async () => {
         try {
-            const response = await axios.post('http://localhost:8000/candidate/candidateLogout');
+            const response = await axios.post('https://job-platform.up.railway.app/candidate/candidateLogout');
             if (response.status === 200) {
                 toast.success("Candidate Loggedout successfully!")
             }
@@ -35,7 +35,7 @@ const MenuBar = ({ hideMenu }) => {
 
     const logoutEmployee = async () => {
         try {
-            const response = await axios.post('http://localhost:8000/employee/employeeLogout');
+            const response = await axios.post('https://job-platform.up.railway.app/employee/employeeLogout');
             if (response.status === 200) {
                 toast.success("Employee Loggedout successfully!")
             }
@@ -46,7 +46,7 @@ const MenuBar = ({ hideMenu }) => {
 
     const logoutAdmin = async () => {
         try {
-            const response = await axios.post('http://localhost:8000/admin/adminLogout');
+            const response = await axios.post('https://job-platform.up.railway.app/admin/adminLogout');
             if (response.status === 200) {
                 toast.success("Admin Loggedout successfully!")
             }
@@ -58,7 +58,7 @@ const MenuBar = ({ hideMenu }) => {
 
     const employeeLoggedUser = async () => {
         try {
-            const response = await axios.get(`http://localhost:8000/employee/viewEmployee`);
+            const response = await axios.get(`https://job-platform.up.railway.app/employee/viewEmployee`);
             setEmployeeUser(response.data);
         } catch (error) {
 
@@ -67,7 +67,7 @@ const MenuBar = ({ hideMenu }) => {
 
     const adminLoggedUser = async () => {
         try {
-            const response = await axios.get(`http://localhost:8000/admin/viewAdmin`);
+            const response = await axios.get(`https://job-platform.up.railway.app/admin/viewAdmin`);
             setAdminUser(response.data);
         } catch (error) {
             console.log(error.message);

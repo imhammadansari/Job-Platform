@@ -19,7 +19,7 @@ const AdminViewJobs = () => {
     const getJobDetails = async () => {
         try {
             setLoading(true);
-            const response = await axios.get('http://localhost:8000/jobs/viewJobsByAdmin');
+            const response = await axios.get('https://job-platform.up.railway.app/jobs/viewJobsByAdmin');
             console.log(response.data);
             setJobDetails(response.data);
         } catch (error) {
@@ -32,7 +32,7 @@ const AdminViewJobs = () => {
     const allCandidates = async () => {
         try {
             setLoading(true);
-            const response = await axios.get('http://localhost:8000/candidate/viewAllCandidate');
+            const response = await axios.get('https://job-platform.up.railway.app/candidate/viewAllCandidate');
             setUsers(response.data);
         } catch (error) {
             console.log(error.message);
@@ -57,7 +57,7 @@ const AdminViewJobs = () => {
     const totalJobs = async () => {
         try {
             setLoading(true);
-            const response = await axios.get('http://localhost:8000/jobs/viewJobs');
+            const response = await axios.get('https://job-platform.up.railway.app/jobs/viewJobs');
             setAllJobs(response.data);
             console.log(response.data);
         } catch (error) {
@@ -69,7 +69,7 @@ const AdminViewJobs = () => {
 
     const deleteJob = async (id) => {
         try {
-            const response = await axios.post(`http://localhost:8000/jobs/adminDeleteJobs/${id}`);
+            const response = await axios.post(`https://job-platform.up.railway.app/jobs/adminDeleteJobs/${id}`);
             if (response.status === 200) {
                 successNotify(id);
                 setTimeout(() => {

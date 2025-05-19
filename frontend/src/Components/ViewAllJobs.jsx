@@ -21,7 +21,7 @@ const ViewAllJobs = ({searchJobs}) => {
     const fetchJobs = async () => {
         try {
             setLoading(true);
-            const response = await axios.get('http://localhost:8000/jobs/viewJobs');
+            const response = await axios.get('https://job-platform.up.railway.app/jobs/viewJobs');
             setJobs(response.data);
             setAllJobs(response.data);
             console.log(response.data)

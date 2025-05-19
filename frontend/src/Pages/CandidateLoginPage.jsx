@@ -16,7 +16,7 @@ const CandidateLoginPage = () => {
     const lognDetails = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:8000/candidate/candidateLogin', {
+            const response = await axios.post('https://job-platform.up.railway.app/candidate/candidateLogin', {
                 email: email,
                 password: password
             });
