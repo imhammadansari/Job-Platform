@@ -15,7 +15,7 @@ const jobsRoute = require('./routes/jobsRoute');
 const candidateListsRoute = require('./routes/candidateListsRoute');
 
 app.use(cors({
-    origin: "https://job-platform-omega.vercel.app/home",
+    origin: "https://job-platform-omega.vercel.app",
     credentials: true
 }))
 
