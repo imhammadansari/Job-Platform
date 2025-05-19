@@ -15,13 +15,13 @@ const Header = () => {
 
       axios.defaults.withCredentials = true;
     
-    const candidateLoggedUser = async () => {
-        try {
-            const response = await axios.get(`https://job-platform.up.railway.app/candidate/viewCandidate`);
-            setCandidateUser(response.data);
-        } catch (error) {
-        }
-    }
+    // const candidateLoggedUser = async () => {
+    //     try {
+    //         const response = await axios.get(`https://job-platform.up.railway.app/candidate/viewCandidate`);
+    //         setCandidateUser(response.data);
+    //     } catch (error) {
+    //     }
+    // }
 
     const logoutCandidate = async () => {
         try {
@@ -60,32 +60,27 @@ const Header = () => {
         }
     }
 
-    const employeeLoggedUser = async () => {
-        try {
-            const response = await axios.get(`https://job-platform.up.railway.app/employee/viewEmployee`);
-            setEmployeeUser(response.data);
-        } catch (error) {
+    // const employeeLoggedUser = async () => {
+    //     try {
+    //         const response = await axios.get(`https://job-platform.up.railway.app/employee/viewEmployee`);
+    //         setEmployeeUser(response.data);
+    //     } catch (error) {
 
-        }
-    }
+    //     }
+    // }
 
-    const adminLoggedUser = async () => {
-        try {
-            const response = await axios.get(`https://job-platform.up.railway.app/admin/viewAdmin`);
-            setAdminUser(response.data);
-        } catch (error) {
-            console.log(error.message);
-        }
-    }
+    // const adminLoggedUser = async () => {
+    //     try {
+    //         const response = await axios.get(`https://job-platform.up.railway.app/admin/viewAdmin`);
+    //         setAdminUser(response.data);
+    //     } catch (error) {
+    //         console.log(error.message);
+    //     }
+    // }
 
     const hideMenu = () => setMenu(false);
     const showMenu = () => setMenu(!menu);
 
-    useEffect(() => {
-        candidateLoggedUser();
-        adminLoggedUser();
-        employeeLoggedUser();
-    }, []);
 
     const handleAccountNavigation = async (e) => {
     const value = e.target.value;
@@ -114,6 +109,38 @@ const Header = () => {
         navigate(value);
     }
 }
+
+useEffect(() => {
+        const fetchLoggedInUser = async () => {
+            try {
+                // Check if Candidate is logged in
+                const candidateRes = await axios.get(`https://job-platform.up.railway.app/candidate/viewCandidate`);
+                if (candidateRes?.data?._id) {
+                    setCandidateUser(candidateRes.data);
+                    return;
+                }
+            } catch (error) {}
+
+            try {
+                // Check if Employee is logged in
+                const employeeRes = await axios.get(`https://job-platform.up.railway.app/employee/viewEmployee`);
+                if (employeeRes?.data?._id) {
+                    setEmployeeUser(employeeRes.data);
+                    return;
+                }
+            } catch (error) {}
+
+            try {
+                // Check if Admin is logged in
+                const adminRes = await axios.get(`https://job-platform.up.railway.app/admin/viewAdmin`);
+                if (adminRes?.data?._id) {
+                    setAdminUser(adminRes.data);
+                }
+            } catch (error) {}
+        };
+
+        fetchLoggedInUser();
+    }, []);
 
 
 
