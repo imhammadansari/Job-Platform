@@ -1,7 +1,7 @@
 const express = require('express');
 const { loginUser, registerUser, logoutUser, deleteUser, viewEmployee } = require('../controllers/employeeControllers');
 const isEmployeeLoggedin = require('../middlewares/isEmployeeLoggedin');
-const isAdminLoggedIn = require('../middlewares/isAdminLoggedIn');
+const isAdminLoggedIn = require('../middlewares/isAdminLoggedin');
 const router = express.Router();
 
 router.post("/employeeRegisterUser", registerUser);

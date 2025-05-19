@@ -2,7 +2,7 @@ const express = require('express');
 const { createJob, viewAllJobs, viewAllEmployeeJobs, viewJobsById, updatejob, updatejobByAdmin, 
     deletejob, deletejobByAdmin } = require('../controllers/jobsController');
 const isEmployeeLoggedin = require('../middlewares/isEmployeeLoggedin');
-const isAdminLoggedIn = require('../middlewares/isAdminLoggedIn');
+const isAdminLoggedIn = require('../middlewares/isAdminLoggedin');
 const router = express.Router();
 
 router.post("/createJob", isEmployeeLoggedin, createJob);

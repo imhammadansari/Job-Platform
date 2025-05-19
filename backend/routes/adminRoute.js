@@ -1,5 +1,5 @@
 const { adminRegistered, adminLogin, adminLogout, viewAdmin } = require("../controllers/adminController");
-const isAdminLoggedIn = require("../middlewares/isAdminLoggedIn");
+const isAdminLoggedIn = require("../middlewares/isAdminLoggedin");
 const express = require('express');
 const router = express.Router();
 
