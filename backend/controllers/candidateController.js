@@ -78,7 +78,7 @@ const allCandidates = async function(req, res){
 
 const viewCandidate = async function (req, res){
     try {
-        const id = req.user._id;
+        const id = req.candidate._id;
 
         const candidate = await candidateModel.findOne(id).select("-password");
 

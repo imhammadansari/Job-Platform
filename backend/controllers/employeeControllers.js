@@ -79,7 +79,7 @@ const loginUser = async function (req, res){
 
 const viewEmployee = async function (req, res){
     try {
-        const id = req.user._id;
+        const id = req.employee._id;
 
         const employee = await employeeModel.findOne(id).select("-password");
 
