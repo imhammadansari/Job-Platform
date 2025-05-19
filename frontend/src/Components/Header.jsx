@@ -29,6 +29,7 @@ const Header = () => {
             if (response.status === 200) {
                 toast.success("Candidate Loggedout successfully!")
                 setTimeout(() => window.location.reload(), 2000);
+                setTimeout(() => navigate('/home'), 500);
             }
         } catch (error) {
 
@@ -41,6 +42,7 @@ const Header = () => {
             if (response.status === 200) {
                 toast.success("Employee Loggedout successfully!");
                 setTimeout(() => window.location.reload(), 2000);
+                setTimeout(() => navigate('/home'), 500);
             }
         } catch (error) {
 
@@ -53,6 +55,7 @@ const Header = () => {
             if (response.status === 200) {
                 toast.success("Admin Loggedout successfully!")
                 setTimeout(() => window.location.reload(), 2000);
+                setTimeout(() => navigate('/home'), 500);
             }
         } catch (error) {
 
