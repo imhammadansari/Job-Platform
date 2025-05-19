@@ -81,7 +81,7 @@ const viewEmployee = async function (req, res){
     try {
         const id = req.employee._id;
 
-        const employee = await employeeModel.findOne(id).select("-password");
+        const employee = await employeeModel.findOne({ _id: id }).select("-password");
 
         if(!employee) return res.status(400).send("No employee found");
 
