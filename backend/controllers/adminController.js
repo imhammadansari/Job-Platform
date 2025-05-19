@@ -25,7 +25,11 @@ const adminRegistered = async function (req, res){
                     })
 
                     let token = jwt.sign({email: admin.email, _id: admin._id}, process.env.ADMIN_KEY);
-                    res.cookie("token", token);
+                    res.cookie("token", token, {
+                        httpOnly: true,
+        secure: true,
+        sameSite: 'None'
+                    });
                     res.status(200).send("Admin Created Successfully");
                 }
 
@@ -74,7 +78,11 @@ const adminLogin = async function (req, res){
             }
 
             let token = jwt.sign({email: admin.email, _id: admin._id}, process.env.ADMIN_KEY);
-            res.cookie("token", token);
+            res.cookie("token", token, {
+                httpOnly: true,
+        secure: true,
+        sameSite: 'None'
+            });
             res.status(200).send("Admin Loggedin");
         })
     } catch (error) {
