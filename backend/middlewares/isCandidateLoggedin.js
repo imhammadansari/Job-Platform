@@ -9,11 +9,11 @@ module.exports = async function (req, res, next){
     try {
         const decoded = jwt.verify(req.cookies.token, process.env.JWT_KEY);
 
-        const candidate = await candidateModel.findOne({email: decoded.email}).select("-password");
+        const user = await candidateModel.findOne({email: decoded.email}).select("-password");
 
-        if(!candidate) return res.status(400).send("Candidate not found");
+        if(!user) return res.status(400).send("Candidate not found");
 
-        req.candidate = candidate;
+        req.user = user;
         next();
     } catch (error) {
         return res.status(500).send(error.message);

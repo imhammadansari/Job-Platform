@@ -45,7 +45,7 @@ const viewAdmin = async function (req, res){
     try {
         const id = req.admin._id;
 
-        const admin = await adminModel.findOne({ _id: id }).select("-password");
+        const admin = await adminModel.findOne(id).select("-password");
 
         if(!admin) return res.status(400).send("No admin found");
 
