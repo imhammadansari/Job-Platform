@@ -7,11 +7,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const ViewAllCandidates = () => {
-
     const navigate = useNavigate();
-
     const [users, setUsers] = useState([]);
-
 
     axios.defaults.withCredentials = true;
 
@@ -20,10 +17,9 @@ const ViewAllCandidates = () => {
             const response = await axios.get('https://job-platform.up.railway.app/candidate/viewAllCandidate');
             setUsers(response.data);
         } catch (error) {
-            
+            toast.error("Failed to load candidates");
         }
     }
-
 
     const deleteUser = async(id) => {
          try {
@@ -35,10 +31,8 @@ const ViewAllCandidates = () => {
         } catch (error) {
             toast.error(error.message);
         }
-
     }
 
-    
     const updateStatus = async(userId, userStatus) => {
         try {
             const newStatus = userStatus === 'Blocked' ? 'UnBlock' : 'Blocked';
@@ -51,8 +45,7 @@ const ViewAllCandidates = () => {
                 setTimeout(() => allCandidates(), 2000);
             }
         } catch (error) {
-            console.log(error.message);
-            
+            toast.error(error.message);
         }
     }
 
@@ -67,62 +60,54 @@ const ViewAllCandidates = () => {
     return (
         <>
             <Header />
-
             <div className='w-full px-2 sm:px-4 md:px-6 lg:px-8 py-2 md:py-4 bg-gray-200 flex flex-col items-center justify-center'>
                 {users.length > 0 ? (
                     <div className='w-full px-2 sm:px-3 md:px-4 lg:px-4 py-2 md:py-4 overflow-x-auto bg-white'>
- 
                         <div className='min-w-[1000px]'>
-                        <div className='grid grid-cols-3 text-center'>
-                            <h1 className='border-l font-medium border-b p-2 border-black'>Name</h1>
-                            <h1 className='border-l font-medium border-b p-2 border-black'>Email</h1>
-                            <h1 className='border-l font-medium border-b p-2 border-black'>Action</h1>
-                        </div>
+                            <div className='grid grid-cols-3 text-center'>
+                                <h1 className='border-l font-medium border-b p-2 border-black'>Name</h1>
+                                <h1 className='border-l font-medium border-b p-2 border-black'>Email</h1>
+                                <h1 className='border-l font-medium border-b p-2 border-black'>Action</h1>
+                            </div>
 
-                        {users?.map((user, index) => {
-                            return (
-                                        <div key={index} className='grid grid-cols-3 text-center'>
-                                    <h1 className='border-l border-b p-2 border-black'>{user.name}</h1>
-                                    <h1 className='border-l border-b p-2 border-black'>{user.email}</h1>
-                                    <div className='flex flex-col md:flex-row gap-2 md:gap-4 p-2 items-center justify-center border-b border-l'>
-                                    <button onClick={() => deleteUser(user._id)} className='p-1 cursor-pointer w-24 md:w-20 h-8 rounded-md text-white bg-red-700'>Delete</button>
-                                    {user.status === 'UnBlock' ? (
-                                        <button onClick={() => updateStatus(user._id, user.status)} className='w-28 h-8 bg-red-600 rounded-md text-sm cursor-pointer'>Block a User</button>
-                                    ) : (
-                                        <button onClick={() => updateStatus(user._id, user.status)} className='w-28 h-8 bg-green-600 text-sm rounded-md cursor-pointer'>UnBlock a User</button>
-
-                                    )}
-                                    
+                            {users?.map((user, index) => {
+                                return (
+                                    <div key={index} className='grid grid-cols-3 text-center'>
+                                        <h1 className='border-l border-b p-2 border-black'>{user.name}</h1>
+                                        <h1 className='border-l border-b p-2 border-black'>{user.email}</h1>
+                                        <div className='flex flex-col md:flex-row gap-2 md:gap-4 p-2 items-center justify-center border-b border-l'>
+                                            <button onClick={() => deleteUser(user._id)} className='p-1 cursor-pointer w-24 md:w-20 h-8 rounded-md text-white bg-red-700'>Delete</button>
+                                            {user.status === 'UnBlock' ? (
+                                                <button onClick={() => updateStatus(user._id, user.status)} className='w-28 h-8 bg-red-600 rounded-md text-sm cursor-pointer'>Block a User</button>
+                                            ) : (
+                                                <button onClick={() => updateStatus(user._id, user.status)} className='w-28 h-8 bg-green-600 text-sm rounded-md cursor-pointer'>UnBlock a User</button>
+                                            )}
+                                        </div>
                                     </div>
-                                </div>
-                            )
-                        })}
+                                )
+                            })}
 
-                        <div className='flex items-center justify-center'>
-                            <button onClick={navigatebutton} className='w-24 cursor-pointer h-10 items-center justify-center flex rounded-md text-white bg-[rgb(2,6,111)] my-2'>Back</button>
-
+                            <div className='flex items-center justify-center'>
+                                <button onClick={navigatebutton} className='w-24 cursor-pointer h-10 items-center justify-center flex rounded-md text-white bg-[rgb(2,6,111)] my-2'>Back</button>
+                            </div>
                         </div>
                     </div>
-                    </div>
-
                 ) : (
                     <p>No Candidates Found</p>
                 )}
-
             </div>
             <ToastContainer 
-  position="top-center"
-  autoClose={3000}
-  closeOnClick
-  pauseOnHover
-  draggable
-  pauseOnFocusLoss
-  theme="colored"
-  style={{ width: "90%", maxWidth: "400px", fontSize: "14px" }}
-/>
+                position="top-center"
+                autoClose={3000}
+                closeOnClick
+                pauseOnHover
+                draggable
+                pauseOnFocusLoss
+                theme="colored"
+                style={{ width: "90%", maxWidth: "400px", fontSize: "14px" }}
+            />
         </>
     )
 }
 
 export default ViewAllCandidates
-
